@@ -102,12 +102,12 @@ if __name__ == "__main__":
                 content, language = scrape_news_v2(user_query)
                 col1, col2 = st.columns(2)
                 with col1:
-                    st.write("### Scraped Content")
+                    st.write("### Content")
                     paragraphs = content.split('\n')
                     content = '\n'.join([para for para in paragraphs[0:-1]]).strip()
                     st.write(content)
                 st.session_state.chat_history.append(AIMessage(content))
                 with col2:
-                    st.write("### Summarized Content")
+                    st.write("### Summary")
                     answer = st.write_stream(summarize_news(content, language))
                     st.session_state.chat_history.append(AIMessage(answer))
